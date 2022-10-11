@@ -62,6 +62,7 @@ if(!entry.isIntersecting) return;
 entry.target.classList.remove("section--hidden")
 observer.unobserver(entry.target);
 }
+
 const sectionObs= new IntersectionObserver(revealSection,{
   root:null,
   threshold:0.3,
@@ -70,9 +71,7 @@ const sectionObs= new IntersectionObserver(revealSection,{
 allSections.forEach(section=>{
   sectionObs.observe(section);
   section.classList.add("section--hidden");
-
 })
-
 
 //Modal Window
 function openModal(e){
@@ -80,6 +79,7 @@ function openModal(e){
   modal.classList.remove("hidden");
   overlay.classList.remove("hidden")
 }
+
 function closeModal(){
   modal.classList.add("hidden")
   overlay.classList.add("hidden")
@@ -95,8 +95,6 @@ document.addEventListener('keydown',function(e){
   }
 })
 
-
-
 //scroll behaviours
 navLinks.addEventListener('click',function(e){
   e.preventDefault();
@@ -105,7 +103,6 @@ navLinks.addEventListener('click',function(e){
       document.querySelector(attr).scrollIntoView({ behavior: 'smooth' });
   }
 })
-
 
 //Toogle Navbar
 toogleBtn.addEventListener('click',function(){
@@ -212,16 +209,12 @@ document.addEventListener("keydown",(e)=>{
 
 
 //Tabbed components
-
 tabsContainer.addEventListener('click',(e)=>{
   const btn= e.target.closest('.operations__tab');
   if(!btn) return;
 
  tabs.forEach(tab=>tab.classList.remove("operations__tab--active"));
-
  tabsContent.forEach(content=>content.classList.remove("operations__content--active"));
-
  btn.classList.add("operations__tab--active")
- 
  document.querySelector(`.operations__content--${btn.dataset.tab} `).classList.add("operations__content--active")
 })
